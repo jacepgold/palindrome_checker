@@ -8,17 +8,18 @@ done = false
 
 def checker
   count = 0
-  while count < @input_down.length
+  while count < @input_down.length do
     @reversed.push(@input_down[count])
     puts "Reversed is #{@reversed[count]}"
     count++
+  end
   
   if @input == @reversed
     puts "#{@input} reversed is #{@reversed}"
     puts "You have a Palindrome!".colorize(:green)
   else
     puts "No Match...".colorize(:red)
-  
+  end
 end
 
 
@@ -32,6 +33,7 @@ while done == false
     puts "Thanks for playing!"
     done = true
   end
+  
   checker
   done = true
 end
