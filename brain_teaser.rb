@@ -1,39 +1,41 @@
 require 'colorize'
+require 'pry'
 
 @reversed = []
-@input_down
 @input = ''
 done = false
 
-
 def checker
   count = 0
-  while count < @input_down.length do
-    @reversed.push(@input_down[count])
-    puts "Reversed is #{@reversed[count]}"
-    count++
+  @input.split('')
+  while count < @input.length
+    @reversed[count] = @input[@input.length - count - 1]
+    count += 1
   end
-  
-  if @input == @reversed
-    puts "#{@input} reversed is #{@reversed}"
-    puts "You have a Palindrome!".colorize(:green)
-  else
-    puts "No Match...".colorize(:red)
+
+  count = 0
+  while count < @input.length 
+    if @input[count] == @reversed[count]
+      puts "You have a Palindrome!".colorize(:green)
+      break
+    else
+      puts "No Match...".colorize(:red)
+      break
+    end
   end
 end
 
 
-while done == false
-  puts 'Enter a word'.colorize(:light_blue)
-  print '> '
-  @input = $stdin.gets.strip
-  @input_down = @input.downcase
-  @input.strip()
-  if @input_down == 'exit'
-    puts "Thanks for playing!"
-    done = true
-  end
-  
-  checker
+
+puts 'Enter a word'.colorize(:light_blue)
+print '> '
+@input = $stdin.gets.strip.downcase
+@input.gsub(" ", "").split("")
+@input.strip()
+if @input == 'exit'
+  puts "Thanks for playing!"
   done = true
 end
+
+checker
+done = true
